@@ -1,0 +1,2 @@
+*.bc filter=lfs diff=lfs merge=lfs -text
+Sara_and_Alan(UnityProject)/Library/il2cpp_cache/linkresult_1020369D797E2F4CFB9868860EC44118/build.bc filter=lfs diff=lfs merge=lfs -text
