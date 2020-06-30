@@ -1,0 +1,23 @@
+rows cols
+descripcion ...
+numero_de_objetos
+row_objeto_1 col_objeto_1 tipo_objeto_1
+...
+row_objeto_n row_objeto_n tipo_objeto_n
+row_alan col_alan (indexado desde 0)
+row_sara col_sara (indexado desde 0)
+row_salida col_salida (indexado desde 0)
+probabilidad_lluvia (número real p: 0 <= x <= 1)
+numero_de_turnos
+
+
+---------------------------------------------------------------------------------------------
+M: montaña
+T: arbol
+p: pasto
+P: camino
+W: agua
+E: salida
+R: casilla aleatoria
+X: pasto o camino aleatorio
+F: montaña, agua o arbol aleatorio
