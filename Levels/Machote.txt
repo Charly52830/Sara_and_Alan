@@ -21,3 +21,12 @@ E: salida
 R: casilla aleatoria
 X: pasto o camino aleatorio
 F: montaña, agua o arbol aleatorio
+
+Object number representation
+0: torch (bitmask 1)
+1: hiking boots (bitmask 2)
+2: fast boots (bitmask 4)
+3: map (bitmask 8)
+4: telescope (bitmask 16)
+5: rain (bitmask 32)
+6: mirror (bitmask 64)

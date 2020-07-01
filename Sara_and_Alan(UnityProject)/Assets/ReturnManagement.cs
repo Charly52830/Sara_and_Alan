@@ -8,7 +8,7 @@ public class ReturnManagement : MonoBehaviour
 {
     // Start is called before the first frame update
 
-	private int max_level = 3;
+	private int max_level = 6;
 
     void Start()
     {
@@ -30,10 +30,12 @@ public class ReturnManagement : MonoBehaviour
             if(!game_type.Equals("encounter")) // Is history mode
             {
                 Debug.Log("Es modo historia");
+                //Debug.Log(string.Format("EL nivel completado es: {0}", PlayerPrefs.GetInt("level")));
                 int level = PlayerPrefs.GetInt("level");
                 level = (level + 1) % max_level;
 
                 PlayerPrefs.SetInt("level", level);
+                //Debug.Log(string.Format("El nivel actual es: {0}", PlayerPrefs.GetInt("level")));
                 TextMeshProUGUI buttonText = GameObject.Find("TryAgainText").GetComponent<TextMeshProUGUI>();
                 buttonText.SetText("Continue");
             }
@@ -66,6 +68,7 @@ public class ReturnManagement : MonoBehaviour
 
     public void ManageTryAgainButton()
     {
+        //Debug.Log(string.Format("En ManageTryAgainButton: {0}", PlayerPrefs.GetInt("level")));
         string game_type = PlayerPrefs.GetString("game_type");
         GameObject preGameWindow = (GameObject)GameObject.Find("PreGameWindow");
         if(game_type.Equals("encounter") || game_type.Equals("escape")) // Arcade mode
@@ -85,8 +88,10 @@ public class ReturnManagement : MonoBehaviour
         if(!(game_type.Equals("encounter") || game_type.Equals("escape")))  // Is history mode
         {
             // Update the level
-           PlayerPrefs.SetString("game_type", string.Format("level_{0}", PlayerPrefs.GetInt("level")));
-           Debug.Log("Actualizando el modo historia");
+            Debug.Log(string.Format("En PlayGame el nivel es: {0}", PlayerPrefs.GetInt("level")));
+            PlayerPrefs.SetString("game_type", string.Format("level_{0}", PlayerPrefs.GetInt("level")));
+            Debug.Log("Actualizando el modo historia");
+            Debug.Log(string.Format("Modo de juego: {0}", PlayerPrefs.GetString("game_type")));
         }
 
         SceneManager.LoadScene("MainGame");

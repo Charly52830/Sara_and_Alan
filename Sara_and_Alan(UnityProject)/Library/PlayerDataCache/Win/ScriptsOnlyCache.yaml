@@ -959,5 +959,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/MainGame.unity
   - Assets/Scenes/FinalScene.unity
-  playerPath: D:/Videojuegos materia/CharlyDungeons/CharlyDungeons/Build/Sara and
-    Alan.exe
+  playerPath: D:/Videojuegos materia/CharlyDungeons/Build/Sara and Alan.exe

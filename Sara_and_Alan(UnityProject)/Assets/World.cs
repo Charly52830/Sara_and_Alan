@@ -64,13 +64,15 @@ namespace MyNamespace
 				tiles_type[this.rows - 1, x] = 0;	//Mountain
 			}
 
-			//Fill inside with random tiles
+			// Fill inside with random tiles
 			int[] tiles = {0, 1, 2, 4, 4, 1, 3, 4, 0, 1, 3, 4, 0, 2, 4};
+			//int[] tiles = {0, 1, 2, 3, 4, 0, 1, 4};	// DEBUG
+
 			for(int x = 1; x < this.rows - 1; x++)
 			{
 				for(int y = 1; y < this.cols - 1; y++)
 				{
-					tiles_type[x, y] = tiles[Random.Range(0, 15)];
+					tiles_type[x, y] = tiles[Random.Range(0, tiles.Length)];
 				}
 			}
 			SetTileNames();

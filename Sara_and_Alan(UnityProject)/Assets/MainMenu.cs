@@ -11,6 +11,7 @@ namespace MyNamespace {
 
 		void Start()
 		{
+			//PlayerPrefs.SetInt("level", 0);	//DEBUG
 			if(!PlayerPrefs.HasKey("level"))
 				PlayerPrefs.SetInt("level", 0);
 		}

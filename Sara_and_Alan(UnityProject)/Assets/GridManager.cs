@@ -55,9 +55,9 @@ namespace MyNamespace {
 			{
 				rows = Random.Range(15, 35);
 				cols = Random.Range(15, 35);
-				//rows = 30;	// Borrar esta linea
-				//cols = 30;	// Borrar esta linea
-				//rain_probability = 0;	// Borrar Esta linea
+				//rows = 43;	// DEBUG
+				//cols = 35;	// DEBUG
+				//rain_probability = 0.0F;	// DEBUG
 				world = new World(rows, cols);
 				world.GetExitPoint();
 			}
@@ -83,6 +83,7 @@ namespace MyNamespace {
 				turn_operand = compressedWorld.turn_operand;
 
 				rain_probability = compressedWorld.rain_probability;
+				Debug.Log(string.Format("Rain probability: {0}", rain_probability));
 				world = new World(compressedWorld);
 				rows -= 2;
 				cols -= 2;
@@ -91,7 +92,7 @@ namespace MyNamespace {
 			cols += 2;
 			rows += 2;
 
-			//world.PrintWorld();
+			//world.PrintWorld();	// DEBUG
 
 			Point alan_point = world.GetPoint(true);
 			Point sara_point = world.GetPoint(false);
