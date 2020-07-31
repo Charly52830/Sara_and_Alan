@@ -4,12 +4,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+/// <summary>
+/// Controla los eventos de la pantalla de game over.
+/// </summary>
 public class ReturnManagement : MonoBehaviour
 {
-    // Start is called before the first frame update
 
 	private int max_level = 6;
 
+    /// <summary>
+    /// Oculta y muestra la información correspondiente al modo de juego
+    /// y al estado final de la partida pasada.
+    /// </summary>
     void Start()
     {
         GameObject completedText = GameObject.Find("CompletedText");
@@ -59,6 +65,10 @@ public class ReturnManagement : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Carga el menú principal. Este método se ejecuta al dar click
+    /// sobre el botón ReturnButton.
+    /// </summary>
     public void ReturnMainMenu()
     {
     	SceneManager.LoadScene("MainMenu");
@@ -66,9 +76,12 @@ public class ReturnManagement : MonoBehaviour
 		Debug.Log("Escena final terminada, volviendo al menú principal");
     }
 
+    /// <summary>
+    /// Escribe las variables adecuadas para continuar con la próxima partida, dependiendo
+    /// del modo de juego y del estado del juego anterior.
+    /// </summary>
     public void ManageTryAgainButton()
     {
-        //Debug.Log(string.Format("En ManageTryAgainButton: {0}", PlayerPrefs.GetInt("level")));
         string game_type = PlayerPrefs.GetString("game_type");
         GameObject preGameWindow = (GameObject)GameObject.Find("PreGameWindow");
         if(game_type.Equals("encounter") || game_type.Equals("escape")) // Arcade mode
@@ -82,16 +95,17 @@ public class ReturnManagement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Inicia un nuevo juego cargando la escena MainGame. Si el modo de juego es historia
+    /// actualiza el nivel a jugar.
+    /// </summary>
     public void PlayGame()
     {
         string game_type = PlayerPrefs.GetString("game_type");
         if(!(game_type.Equals("encounter") || game_type.Equals("escape")))  // Is history mode
         {
             // Update the level
-            Debug.Log(string.Format("En PlayGame el nivel es: {0}", PlayerPrefs.GetInt("level")));
             PlayerPrefs.SetString("game_type", string.Format("level_{0}", PlayerPrefs.GetInt("level")));
-            Debug.Log("Actualizando el modo historia");
-            Debug.Log(string.Format("Modo de juego: {0}", PlayerPrefs.GetString("game_type")));
         }
 
         SceneManager.LoadScene("MainGame");
@@ -99,6 +113,9 @@ public class ReturnManagement : MonoBehaviour
         Debug.Log("Escena final terminada, empezando una nueva partida");
     }
 
+    /// <summary>
+    /// Muestra en pantalla el texto asociado al nivel del juego.
+    /// </summary>
     private void ManagePreGameWindow()
     {
         TextMeshProUGUI gameModeText = GameObject.Find("GameModeTitle").GetComponent<TextMeshProUGUI>();

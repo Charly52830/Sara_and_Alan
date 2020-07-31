@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace MyNamespace
 {
+	/// <summary>
+	/// Administra la posesión de objetos de un personaje.
+	/// </summary>
 	public class CharacterManager
 	{
 		private int torch_counter;
@@ -89,6 +92,11 @@ namespace MyNamespace
 			return mirror;
 		}
 
+		/// <summary>
+		/// Evalúa si avanzar a una nueva casilla es un movimiento válido considerando los
+		/// objetos del personaje y el tipo de la casilla.
+		/// </summary>
+		/// <returns>True si el personaje puede avanzar a una casilla del tipo dado, False si no.</returns>
 		public bool IsValidMove(int tile_type)
 		{
 			if(tile_type == 2 || tile_type == 3)	// Pasture or path tile

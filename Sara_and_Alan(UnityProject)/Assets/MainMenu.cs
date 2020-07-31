@@ -6,16 +6,20 @@ using TMPro;
 
 namespace MyNamespace {
 
+	/// <summary>
+	/// Controla los eventos del menú principal.
+	/// </summary>
 	public class MainMenu : MonoBehaviour
 	{
 
+		/// <summary>Verifica la existencia de las variables de control del nivel.</summary>
 		void Start()
 		{
-			//PlayerPrefs.SetInt("level", 0);	//DEBUG
 			if(!PlayerPrefs.HasKey("level"))
 				PlayerPrefs.SetInt("level", 0);
 		}
 
+		/// <summary>Controla el menú de historia en función del nivel actual del personaje.</summary>
 		public void ManageHistoryButton()
 		{
 			GameObject continueButton = GameObject.Find("ContinueButton");
@@ -24,6 +28,7 @@ namespace MyNamespace {
 				continueButton.SetActive(false);
 		}
 
+		/// <summary>Controla el menú de juego nuevo.</summary>
 		public void ManageNewGameButton()
 		{
 			if(PlayerPrefs.GetInt("level") == 0) 
@@ -42,17 +47,20 @@ namespace MyNamespace {
 			}
 		}
 
+		/// <summary>Carga la pantalla de carga.</summary>
 		public void ManageContinueButton()
 		{
 			PlayerPrefs.SetString("game_type", string.Format("level_{0}", PlayerPrefs.GetInt("level")));
 			ManagePreGameWindow();
 		}
 
+		/// <summary>Inicia un nuevo juego.</summary>
 	    public void PlayGame()
 	    {
 	    	SceneManager.LoadScene("MainGame");
 	    }
 
+	    /// <summary>Reinicia el modo historia del juego para empezar desde el primer nivel.</summary>
 	    public void StartNewGame()
 	    {
 	    	PlayerPrefs.SetInt("level", 0);
@@ -60,24 +68,28 @@ namespace MyNamespace {
 	    	ManagePreGameWindow();
 	    }
 
+	    /// <summary>Prepara un juego del modo encounter.</summary>
 	    public void LoadEncounterGame()
 	    {
 	    	PlayerPrefs.SetString("game_type", "encounter");
 		    ManagePreGameWindow();
 	    }
 
+	    /// <summary>Prepara un juego del modo escape.</summary>
 	    public void LoadEscapeGame()
 	    {
 	    	PlayerPrefs.SetString("game_type", "escape");
 	    	ManagePreGameWindow();
 	    }
 
+	    /// <summary>Termina la ejecución de todos los procesos del juego.</summary>
 	    public void QuitGame()
 	    {
 	    	Debug.Log("Quitting...");
 	    	Application.Quit();
 	    }
 
+	    /// <summary>Controla el texto de la pantalla de carga.</summary>
 	    public void ManagePreGameWindow()
 	    {
 	    	TextMeshProUGUI gameModeText = GameObject.Find("GameModeTitle").GetComponent<TextMeshProUGUI>();

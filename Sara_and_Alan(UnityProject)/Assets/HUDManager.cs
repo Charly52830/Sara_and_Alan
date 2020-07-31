@@ -5,6 +5,10 @@ using TMPro;
 
 namespace MyNamespace
 {
+	/// <summary>
+	/// Clase que controla la información mostrada en la pantalla del juego,
+	/// como el número de turnos o los objetos del personaje.
+	/// </summary>
 	public class HUDManager
 	{
 		private GameObject torchIcon;
@@ -23,7 +27,10 @@ namespace MyNamespace
 		private GameObject hikingBootsCountText;
 		private GameObject skipButton;
 
-
+		/// <summary>
+		/// Crea un nuevo objeto HUDManager. Obtiene información importante como el tipo
+		/// de juego y la muestra en pantalla.
+		/// </summary>
 		public HUDManager()
 		{
 			torchIcon = GameObject.Find("TorchIcon");
@@ -50,14 +57,23 @@ namespace MyNamespace
 			rainCountText = GameObject.Find("RainCountText");
 			hikingBootsCountText = GameObject.Find("HikingBootsCounter");
 			skipButton = GameObject.Find("SkipButton");
-
 		}
 
+		/// <summary>
+		/// Deshabilita el botón de omitir turno.
+		/// </summary>
 		public void DisableSkipButton()
 		{
 			skipButton.SetActive(false);
 		}
 
+		/// <summary>
+		/// Actualiza la información de un contador de la pantalla. Existen contadores para
+		/// el icono de lluvia, antorchas y botas de montaña.
+		/// </summary>
+		/// <param name="counter">Contador del objeto.</param>
+		/// <param name="icon">Referencia al icono del objeto.</param>
+		/// <param name="counter_text">Referencia al texto del contador.</param>
 		private void TestCounter(int counter, GameObject icon, GameObject counter_text)
 		{
 			if(counter > 0)
@@ -74,6 +90,15 @@ namespace MyNamespace
 			}
 		}
 
+		/// <summary>
+		/// Este método es llamado cuando ocurre un cambio de turno de personaje. Actualiza la información
+		/// en la pantalla dada la información actual del juego.
+		/// </summary>
+		/// <param name="character">Referencia al objeto CharacterManager del personaje del turno actual.</param>
+		/// <param name="isAlan">True si el personaje actual es Alan, False si no.</param>
+		/// <param name="turns">Contador del número de turnos.</param>
+		/// <param name="movements">Contador del número de movimientos.</param>
+		/// <param name="rain_counter">Contador del número de turnos con lluvia.</param>
 		public void UpdateHUD(CharacterManager character, bool isAlan, int movements, int turns, int rain_counter)
 		{
 			// Object icons

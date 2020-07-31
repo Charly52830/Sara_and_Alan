@@ -6,9 +6,54 @@ using System.IO;
 namespace MyNamespace 
 {
 
+	/// <summary>
+	/// Clase que proporciona los métodos necesarios para cargar en el juego un nivel
+	/// del modo historia.
+	/// </summary>
 	public static class LevelLoader 
 	{
 	    
+	    /// <summary>
+	    /// Método que carga al juego un nivel del modo historia. Los archivos de los niveles
+	    /// se encuentran en el directorio levels/ en formato de texto con una representación
+	    /// minimalista del mundo, en las que cada casilla se representa con una letra del alfabeto latino:
+	    /// M: montaña
+		/// T: arbol
+		/// p: pasto
+		/// P: camino
+		/// W: agua
+		/// E: salida
+		/// R: casilla aleatoria
+		/// X: pasto o camino aleatorio
+		/// r: montaña, agua o arbol aleatorio
+		///
+		/// El formato que siguen los archivos es el siguiente:
+		/// rows cols
+		/// fila_1 (WWPTpRXE... cols caracteres)
+		/// fila_2 (WWPTpRXE... cols caracteres)
+		/// ...
+		/// numero_de_objetos
+		/// row_objeto_1 col_objeto_1 tipo_objeto_1
+		/// ...
+		/// row_objeto_n row_objeto_n tipo_objeto_n
+		/// row_alan col_alan (indexado desde 0)
+		/// row_sara col_sara (indexado desde 0)
+		/// row_salida col_salida (indexado desde 0)
+		/// probabilidad_lluvia (número real p: 0 <= x <= 1)
+		/// numero_de_turnos
+		///
+		/// Los objetos siguen las siguientes reglas de representación:
+		/// 0: torch (bitmask 1)
+		/// 1: hiking boots (bitmask 2)
+		/// 2: fast boots (bitmask 4)
+		/// 3: map (bitmask 8)
+		/// 4: telescope (bitmask 16)
+		/// 5: rain (bitmask 32)
+		/// 6: mirror (bitmask 64)
+	    /// </summary>
+	    /// <returns>Instancia de CompressedWorld que contiene la información necesaria para
+	    /// crear el mundo.</returns>
+	    // TO DO: agregar orientación a los niveles del mundo.
 	    public static CompressedWorld LoadLevel(string level)
 	    {
 	    	CompressedWorld compressedWorld = new CompressedWorld();
@@ -118,7 +163,10 @@ namespace MyNamespace
 	    	return compressedWorld;
 	    }
 
-	    public static Point ParsePoint(string line) 
+	    /// <summary>
+	    /// Utilidad de la clase LevelLoader que realiza un parse de un string a un punto.
+	    /// </summary>
+	    private static Point ParsePoint(string line) 
 	    {
 	    	var parts = line.Split(' ');
 	    	return new Point(int.Parse(parts[0]) + 1, int.Parse(parts[1]) + 1);
