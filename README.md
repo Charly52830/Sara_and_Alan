@@ -1,8 +1,10 @@
-# Sara y Alan
+# Sara and Alan
 
+Sara and Alan is a casual videogame made in Unity 2D. You will play as Sara and Alan, each character on their own turn, with the goal of meeting in the forest as they search for their father's relics.
+
+Visit the page of the game: http://sara-and-alan.com
+
+Play on simmer.io
 [![simmer](https://simmer.io/static/images/simmeryellowtiny.png)](https://simmer.io/@Charly52830/sara-and-alan)
 
-Sara y Alan es un videojuego casual desarrollado en Unity. Controlarás a Sara y a Alan en distintos turnos con el objetivo de reunirlos en el mismo lugar mientras buscan las reliquias de su padre.
-
-Para más información visita la página del juego:
-http://3.12.249.125/
+Find source code in: Sara_and_Alan(UnityProject)/Assets/*.cs
